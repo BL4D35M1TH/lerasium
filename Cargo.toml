@@ -26,12 +26,11 @@ tracing = { version = "0.1.37", optional = true }
 http = "0.2.8"
 serde = { version = "1.0.152", features = ["derive"] }
 futures-timer = { version = "3.0.2", features = ["wasm-bindgen"] }
-rust-embed = { version = "6.4.2", features = ["axum-ex"], optional = true }
 mime_guess = "2.0.4"
 
 [features]
 hydrate = ["leptos/hydrate", "leptos_meta/hydrate", "leptos_router/hydrate"]
-ssr = ["dep:rust-embed", "dep:axum", "dep:tokio", "dep:tower", "dep:tower-http", "dep:leptos_axum", "leptos/ssr", "leptos_meta/ssr", "leptos_router/ssr", "dep:tracing"]
+ssr = ["dep:axum", "dep:tokio", "dep:tower", "dep:tower-http", "dep:leptos_axum", "leptos/ssr", "leptos_meta/ssr", "leptos_router/ssr", "dep:tracing"]
 
 [package.metadata.cargo-all-features]
 denylist = [
