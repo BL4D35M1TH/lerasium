@@ -1,0 +1,1882 @@
+   Compiling mio v0.8.6
+   Compiling unicase v2.6.0
+   Compiling socket2 v0.4.7
+   Compiling http-range-header v0.3.0
+error[E0583]: file not found for module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:124:1
+    |
+124 | mod sys;
+    | ^^^^^^^^
+    |
+    = help: to create the module `sys`, create file "/home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/sys.rs" or "/home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/sys/mod.rs"
+
+error: Socket2 doesn't support the compile target
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:127:1
+    |
+127 | compile_error!("Socket2 doesn't support the compile target");
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0432]: unresolved imports `crate::sys::sa_family_t`, `crate::sys::sockaddr`, `crate::sys::sockaddr_in`, `crate::sys::sockaddr_in6`, `crate::sys::sockaddr_storage`, `crate::sys::socklen_t`, `crate::sys::AF_INET`, `crate::sys::AF_INET6`
+ --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/sockaddr.rs:6:5
+  |
+6 |     sa_family_t, sockaddr, sockaddr_in, sockaddr_in6, sockaddr_storage, socklen_t, AF_INET,
+  |     ^^^^^^^^^^^  ^^^^^^^^  ^^^^^^^^^^^  ^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^  ^^^^^^^^^  ^^^^^^^ no `AF_INET` in `sys`
+  |     |            |         |            |             |                 |
+  |     |            |         |            |             |                 no `socklen_t` in `sys`
+  |     |            |         |            |             no `sockaddr_storage` in `sys`
+  |     |            |         |            no `sockaddr_in6` in `sys`
+  |     |            |         no `sockaddr_in` in `sys`
+  |     |            no `sockaddr` in `sys`
+  |     no `sa_family_t` in `sys`
+7 |     AF_INET6,
+  |     ^^^^^^^^ no `AF_INET6` in `sys`
+  |
+help: consider importing this module instead
+  |
+6 |     sa_family_t, crate::sockaddr;
+  |                  ~~~~~~~~~~~~~~~~
+
+error[E0432]: unresolved imports `crate::sys::c_int`, `crate::sys::getsockopt`, `crate::sys::setsockopt`, `crate::sys::Bool`
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:21:24
+   |
+21 | use crate::sys::{self, c_int, getsockopt, setsockopt, Bool};
+   |                        ^^^^^  ^^^^^^^^^^  ^^^^^^^^^^  ^^^^ no `Bool` in `sys`
+   |                        |      |           |
+   |                        |      |           no `setsockopt` in `sys`
+   |                        |      no `getsockopt` in `sys`
+   |                        no `c_int` in `sys`
+   |
+help: consider importing one of these items instead
+   |
+21 | use crate::sys::{self, core::ffi::c_int;
+   |                        ~~~~~~~~~~~~~~~~~
+21 | use crate::sys::{self, std::ffi::c_int;
+   |                        ~~~~~~~~~~~~~~~~
+21 | use crate::sys::{self, std::os::raw::c_int;
+   |                        ~~~~~~~~~~~~~~~~~~~~
+
+error[E0432]: unresolved import `sys::c_int`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:129:5
+    |
+129 | use sys::c_int;
+    |     ^^^^^^^^^^ no `c_int` in `sys`
+    |
+help: consider importing one of these items instead
+    |
+129 | use core::ffi::c_int;
+    |     ~~~~~~~~~~~~~~~~~
+129 | use std::ffi::c_int;
+    |     ~~~~~~~~~~~~~~~~
+129 | use std::os::raw::c_int;
+    |     ~~~~~~~~~~~~~~~~~~~~
+
+error[E0432]: unresolved import `crate::sys::IoSourceState`
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/io_source.rs:12:5
+   |
+12 | use crate::sys::IoSourceState;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^ no `IoSourceState` in `sys`
+
+error[E0432]: unresolved import `crate::sys::tcp`
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/tcp/listener.rs:15:17
+   |
+15 | use crate::sys::tcp::{bind, listen, new_for_addr};
+   |                 ^^^ could not find `tcp` in `sys`
+
+error[E0432]: unresolved import `crate::sys::tcp`
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/tcp/stream.rs:13:17
+   |
+13 | use crate::sys::tcp::{connect, new_for_addr};
+   |                 ^^^ could not find `tcp` in `sys`
+
+error[E0433]: failed to resolve: could not find `Selector` in `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/poll.rs:301:18
+    |
+301 |             sys::Selector::new().map(|selector| Poll {
+    |                  ^^^^^^^^ could not find `Selector` in `sys`
+
+error[E0433]: failed to resolve: could not find `event` in `sys`
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/event.rs:24:14
+   |
+24 |         sys::event::token(&self.inner)
+   |              ^^^^^ could not find `event` in `sys`
+
+error[E0433]: failed to resolve: could not find `event` in `sys`
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/event.rs:38:14
+   |
+38 |         sys::event::is_readable(&self.inner)
+   |              ^^^^^ could not find `event` in `sys`
+
+error[E0433]: failed to resolve: could not find `event` in `sys`
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/event.rs:43:14
+   |
+43 |         sys::event::is_writable(&self.inner)
+   |              ^^^^^ could not find `event` in `sys`
+
+error[E0433]: failed to resolve: could not find `event` in `sys`
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/event.rs:68:14
+   |
+68 |         sys::event::is_error(&self.inner)
+   |              ^^^^^ could not find `event` in `sys`
+
+error[E0433]: failed to resolve: could not find `event` in `sys`
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/event.rs:99:14
+   |
+99 |         sys::event::is_read_closed(&self.inner)
+   |              ^^^^^ could not find `event` in `sys`
+
+error[E0433]: failed to resolve: could not find `event` in `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/event.rs:129:14
+    |
+129 |         sys::event::is_write_closed(&self.inner)
+    |              ^^^^^ could not find `event` in `sys`
+
+error[E0433]: failed to resolve: could not find `event` in `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/event.rs:151:14
+    |
+151 |         sys::event::is_priority(&self.inner)
+    |              ^^^^^ could not find `event` in `sys`
+
+error[E0433]: failed to resolve: could not find `event` in `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/event.rs:173:14
+    |
+173 |         sys::event::is_aio(&self.inner)
+    |              ^^^^^ could not find `event` in `sys`
+
+error[E0433]: failed to resolve: could not find `event` in `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/event.rs:183:14
+    |
+183 |         sys::event::is_lio(&self.inner)
+    |              ^^^^^ could not find `event` in `sys`
+
+error[E0433]: failed to resolve: could not find `event` in `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/event.rs:221:26
+    |
+221 |                     sys::event::debug_details(f, self.0)
+    |                          ^^^^^ could not find `event` in `sys`
+
+error[E0433]: failed to resolve: could not find `tcp` in `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/tcp/listener.rs:103:18
+    |
+103 |             sys::tcp::accept(inner).map(|(stream, addr)| (TcpStream::from_std(stream), addr))
+    |                  ^^^ could not find `tcp` in `sys`
+
+error[E0433]: failed to resolve: could not find `udp` in `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/udp.rs:122:14
+    |
+122 |         sys::udp::bind(addr).map(UdpSocket::from_std)
+    |              ^^^ could not find `udp` in `sys`
+
+error[E0433]: failed to resolve: could not find `udp` in `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/udp.rs:544:14
+    |
+544 |         sys::udp::only_v6(&self.inner)
+    |              ^^^ could not find `udp` in `sys`
+
+error[E0412]: cannot find type `Selector` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/poll.rs:255:20
+    |
+255 |     selector: sys::Selector,
+    |                    ^^^^^^^^ not found in `sys`
+
+error[E0412]: cannot find type `Selector` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/poll.rs:689:44
+    |
+689 |     pub(crate) fn selector(&self) -> &sys::Selector {
+    |                                            ^^^^^^^^ not found in `sys`
+
+error[E0412]: cannot find type `Waker` in module `sys`
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/waker.rs:79:17
+   |
+79 |     inner: sys::Waker,
+   |                 ^^^^^ not found in `sys`
+   |
+help: consider importing one of these items
+   |
+1  | use core::task::Waker;
+   |
+1  | use crate::Waker;
+   |
+1  | use std::task::Waker;
+   |
+help: if you import `Waker`, refer to it directly
+   |
+79 -     inner: sys::Waker,
+79 +     inner: Waker,
+   |
+
+error[E0433]: failed to resolve: could not find `Waker` in `sys`
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/waker.rs:87:14
+   |
+87 |         sys::Waker::new(registry.selector(), token).map(|inner| Waker { inner })
+   |              ^^^^^ could not find `Waker` in `sys`
+   |
+help: consider importing one of these items
+   |
+1  | use core::task::Waker;
+   |
+1  | use crate::Waker;
+   |
+1  | use std::task::Waker;
+   |
+help: if you import `Waker`, refer to it directly
+   |
+87 -         sys::Waker::new(registry.selector(), token).map(|inner| Waker { inner })
+87 +         Waker::new(registry.selector(), token).map(|inner| Waker { inner })
+   |
+
+error[E0412]: cannot find type `Event` in module `sys`
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/event.rs:18:17
+   |
+18 |     inner: sys::Event,
+   |                 ^^^^^ not found in `sys`
+   |
+help: consider importing this struct
+   |
+1  | use crate::event::Event;
+   |
+help: if you import `Event`, refer to it directly
+   |
+18 -     inner: sys::Event,
+18 +     inner: Event,
+   |
+
+error[E0412]: cannot find type `Event` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/event.rs:187:55
+    |
+187 |     pub(crate) fn from_sys_event_ref(sys_event: &sys::Event) -> &Event {
+    |                                                       ^^^^^ not found in `sys`
+    |
+help: consider importing this struct
+    |
+1   | use crate::event::Event;
+    |
+help: if you import `Event`, refer to it directly
+    |
+187 -     pub(crate) fn from_sys_event_ref(sys_event: &sys::Event) -> &Event {
+187 +     pub(crate) fn from_sys_event_ref(sys_event: &Event) -> &Event {
+    |
+
+error[E0412]: cannot find type `Event` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/event.rs:191:41
+    |
+191 |             &*(sys_event as *const sys::Event as *const Event)
+    |                                         ^^^^^ not found in `sys`
+    |
+help: consider importing this struct
+    |
+1   | use crate::event::Event;
+    |
+help: if you import `Event`, refer to it directly
+    |
+191 -             &*(sys_event as *const sys::Event as *const Event)
+191 +             &*(sys_event as *const Event as *const Event)
+    |
+
+error[E0412]: cannot find type `Event` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/event.rs:217:46
+    |
+217 |             struct EventDetails<'a>(&'a sys::Event);
+    |                                              ^^^^^ not found in `sys`
+    |
+help: consider importing this struct
+    |
+1   | use crate::event::Event;
+    |
+help: if you import `Event`, refer to it directly
+    |
+217 -             struct EventDetails<'a>(&'a sys::Event);
+217 +             struct EventDetails<'a>(&'a Event);
+    |
+
+error[E0412]: cannot find type `Events` in module `sys`
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/events.rs:43:17
+   |
+43 |     inner: sys::Events,
+   |                 ^^^^^^ not found in `sys`
+   |
+help: consider importing this struct
+   |
+1  | use crate::Events;
+   |
+help: if you import `Events`, refer to it directly
+   |
+43 -     inner: sys::Events,
+43 +     inner: Events,
+   |
+
+error[E0433]: failed to resolve: could not find `Events` in `sys`
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/events.rs:94:25
+   |
+94 |             inner: sys::Events::with_capacity(capacity),
+   |                         ^^^^^^ could not find `Events` in `sys`
+   |
+help: consider importing this struct
+   |
+1  | use crate::Events;
+   |
+help: if you import `Events`, refer to it directly
+   |
+94 -             inner: sys::Events::with_capacity(capacity),
+94 +             inner: Events::with_capacity(capacity),
+   |
+
+error[E0412]: cannot find type `Events` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/events.rs:189:47
+    |
+189 |     pub(crate) fn sys(&mut self) -> &mut sys::Events {
+    |                                               ^^^^^^ not found in `sys`
+    |
+help: consider importing this struct
+    |
+1   | use crate::Events;
+    |
+help: if you import `Events`, refer to it directly
+    |
+189 -     pub(crate) fn sys(&mut self) -> &mut sys::Events {
+189 +     pub(crate) fn sys(&mut self) -> &mut Events {
+    |
+
+error[E0425]: cannot find value `listener` in this scope
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/tcp/listener.rs:74:24
+   |
+74 |         set_reuseaddr(&listener.inner, true)?;
+   |                        ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `listener` in this scope
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/tcp/listener.rs:76:15
+   |
+76 |         bind(&listener.inner, addr)?;
+   |               ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `listener` in this scope
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/tcp/listener.rs:77:17
+   |
+77 |         listen(&listener.inner, 1024)?;
+   |                 ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `listener` in this scope
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/tcp/listener.rs:78:12
+   |
+78 |         Ok(listener)
+   |            ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `stream` in this scope
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/tcp/stream.rs:90:18
+   |
+90 |         connect(&stream.inner, addr)?;
+   |                  ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `stream` in this scope
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/tcp/stream.rs:91:12
+   |
+91 |         Ok(stream)
+   |            ^^^^^^ not found in this scope
+
+error[E0433]: failed to resolve: could not find `MaybeUninitSlice` in `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:307:31
+    |
+307 |         MaybeUninitSlice(sys::MaybeUninitSlice::new(buf))
+    |                               ^^^^^^^^^^^^^^^^ could not find `MaybeUninitSlice` in `sys`
+
+error[E0425]: cannot find function `from_in_addr` in module `crate::sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/sockaddr.rs:170:34
+    |
+170 |             let ip = crate::sys::from_in_addr(addr.sin_addr);
+    |                                  ^^^^^^^^^^^^ not found in `crate::sys`
+
+error[E0425]: cannot find function `from_in6_addr` in module `crate::sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/sockaddr.rs:177:34
+    |
+177 |             let ip = crate::sys::from_in6_addr(addr.sin6_addr);
+    |                                  ^^^^^^^^^^^^^ not found in `crate::sys`
+
+error[E0425]: cannot find function `to_in_addr` in module `crate::sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/sockaddr.rs:228:35
+    |
+228 |             sin_addr: crate::sys::to_in_addr(addr.ip()),
+    |                                   ^^^^^^^^^^ not found in `crate::sys`
+
+error[E0425]: cannot find function `to_in6_addr` in module `crate::sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/sockaddr.rs:263:36
+    |
+263 |             sin6_addr: crate::sys::to_in6_addr(addr.ip()),
+    |                                    ^^^^^^^^^^^ not found in `crate::sys`
+
+error[E0412]: cannot find type `Socket` in module `sys`
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:86:38
+   |
+86 |     pub(crate) fn from_raw(raw: sys::Socket) -> Socket {
+   |                                      ^^^^^^ not found in `sys`
+   |
+help: consider importing this struct
+   |
+9  | use crate::Socket;
+   |
+help: if you import `Socket`, refer to it directly
+   |
+86 -     pub(crate) fn from_raw(raw: sys::Socket) -> Socket {
+86 +     pub(crate) fn from_raw(raw: Socket) -> Socket {
+   |
+
+error[E0425]: cannot find function `socket_from_raw` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:104:22
+    |
+104 |                 sys::socket_from_raw(raw)
+    |                      ^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0412]: cannot find type `Socket` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:109:41
+    |
+109 |     pub(crate) fn as_raw(&self) -> sys::Socket {
+    |                                         ^^^^^^ not found in `sys`
+    |
+help: consider importing this struct
+    |
+9   | use crate::Socket;
+    |
+help: if you import `Socket`, refer to it directly
+    |
+109 -     pub(crate) fn as_raw(&self) -> sys::Socket {
+109 +     pub(crate) fn as_raw(&self) -> Socket {
+    |
+
+error[E0425]: cannot find function `socket_as_raw` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:110:14
+    |
+110 |         sys::socket_as_raw(&self.inner)
+    |              ^^^^^^^^^^^^^ not found in `sys`
+
+error[E0412]: cannot find type `Socket` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:113:42
+    |
+113 |     pub(crate) fn into_raw(self) -> sys::Socket {
+    |                                          ^^^^^^ not found in `sys`
+    |
+help: consider importing this struct
+    |
+9   | use crate::Socket;
+    |
+help: if you import `Socket`, refer to it directly
+    |
+113 -     pub(crate) fn into_raw(self) -> sys::Socket {
+113 +     pub(crate) fn into_raw(self) -> Socket {
+    |
+
+error[E0425]: cannot find function `socket_into_raw` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:114:14
+    |
+114 |         sys::socket_into_raw(self.inner)
+    |              ^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `socket` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:138:14
+    |
+138 |         sys::socket(domain.0, ty.0, protocol).map(Socket::from_raw)
+    |              ^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `bind` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:181:14
+    |
+181 |         sys::bind(self.as_raw(), address)
+    |              ^^^^ not found in `sys`
+
+error[E0425]: cannot find function `connect` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:199:14
+    |
+199 |         sys::connect(self.as_raw(), address)
+    |              ^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `poll_connect` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:234:14
+    |
+234 |         sys::poll_connect(self, timeout)
+    |              ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `listen` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:246:14
+    |
+246 |         sys::listen(self.as_raw(), backlog)
+    |              ^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `accept` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:297:14
+    |
+297 |         sys::accept(self.as_raw()).map(|(inner, addr)| (Socket::from_raw(inner), addr))
+    |              ^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `getsockname` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:309:14
+    |
+309 |         sys::getsockname(self.as_raw())
+    |              ^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `getpeername` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:320:14
+    |
+320 |         sys::getpeername(self.as_raw())
+    |              ^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:326:58
+    |
+326 |         unsafe { getsockopt::<c_int>(self.as_raw(), sys::SOL_SOCKET, sys::SO_TYPE).map(Type) }
+    |                                                          ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_TYPE` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:326:75
+    |
+326 |         unsafe { getsockopt::<c_int>(self.as_raw(), sys::SOL_SOCKET, sys::SO_TYPE).map(Type) }
+    |                                                                           ^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `try_clone` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:343:14
+    |
+343 |         sys::try_clone(self.as_raw()).map(Socket::from_raw)
+    |              ^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `set_nonblocking` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:355:14
+    |
+355 |         sys::set_nonblocking(self.as_raw(), nonblocking)
+    |              ^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `shutdown` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:363:14
+    |
+363 |         sys::shutdown(self.as_raw(), how)
+    |              ^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `MSG_OOB` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:398:40
+    |
+398 |         self.recv_with_flags(buf, sys::MSG_OOB)
+    |                                        ^^^^^^^ not found in `sys`
+
+error[E0412]: cannot find type `c_int` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:408:21
+    |
+408 |         flags: sys::c_int,
+    |                     ^^^^^ not found in `sys`
+    |
+help: consider importing one of these items
+    |
+9   | use core::ffi::c_int;
+    |
+9   | use std::ffi::c_int;
+    |
+9   | use std::os::raw::c_int;
+    |
+help: if you import `c_int`, refer to it directly
+    |
+408 -         flags: sys::c_int,
+408 +         flags: c_int,
+    |
+
+error[E0425]: cannot find function `recv` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:410:14
+    |
+410 |         sys::recv(self.as_raw(), buf, flags)
+    |              ^^^^ not found in `sys`
+
+error[E0425]: cannot find function `recv_vectored` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:465:14
+    |
+465 |         sys::recv_vectored(self.as_raw(), bufs, flags)
+    |              ^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `MSG_PEEK` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:482:40
+    |
+482 |         self.recv_with_flags(buf, sys::MSG_PEEK)
+    |                                        ^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `recv_from` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:507:14
+    |
+507 |         sys::recv_from(self.as_raw(), buf, flags)
+    |              ^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `set_reuseaddr` in this scope
+  --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/tcp/listener.rs:74:9
+   |
+74 |         set_reuseaddr(&listener.inner, true)?;
+   |         ^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `recv_from_vectored` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:549:14
+    |
+549 |         sys::recv_from_vectored(self.as_raw(), bufs, flags)
+    |              ^^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `MSG_PEEK` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:567:45
+    |
+567 |         self.recv_from_with_flags(buf, sys::MSG_PEEK)
+    |                                             ^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `send` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:585:14
+    |
+585 |         sys::send(self.as_raw(), buf, flags)
+    |              ^^^^ not found in `sys`
+
+error[E0425]: cannot find function `send_vectored` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:606:14
+    |
+606 |         sys::send_vectored(self.as_raw(), bufs, flags)
+    |              ^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `MSG_OOB` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:617:40
+    |
+617 |         self.send_with_flags(buf, sys::MSG_OOB)
+    |                                        ^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `send_to` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:638:14
+    |
+638 |         sys::send_to(self.as_raw(), buf, addr, flags)
+    |              ^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `send_to_vectored` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:661:14
+    |
+661 |         sys::send_to_vectored(self.as_raw(), bufs, addr, flags)
+    |              ^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:748:53
+    |
+748 |             getsockopt::<c_int>(self.as_raw(), sys::SOL_SOCKET, sys::SO_BROADCAST)
+    |                                                     ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_BROADCAST` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:748:70
+    |
+748 |             getsockopt::<c_int>(self.as_raw(), sys::SOL_SOCKET, sys::SO_BROADCAST)
+    |                                                                      ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:761:22
+    |
+761 |                 sys::SOL_SOCKET,
+    |                      ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_BROADCAST` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:762:22
+    |
+762 |                 sys::SO_BROADCAST,
+    |                      ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:774:64
+    |
+774 |         match unsafe { getsockopt::<c_int>(self.as_raw(), sys::SOL_SOCKET, sys::SO_ERROR) } {
+    |                                                                ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_ERROR` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:774:81
+    |
+774 |         match unsafe { getsockopt::<c_int>(self.as_raw(), sys::SOL_SOCKET, sys::SO_ERROR) } {
+    |                                                                                 ^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:788:52
+    |
+788 |             getsockopt::<Bool>(self.as_raw(), sys::SOL_SOCKET, sys::SO_KEEPALIVE)
+    |                                                    ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_KEEPALIVE` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:788:69
+    |
+788 |             getsockopt::<Bool>(self.as_raw(), sys::SOL_SOCKET, sys::SO_KEEPALIVE)
+    |                                                                     ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:800:22
+    |
+800 |                 sys::SOL_SOCKET,
+    |                      ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_KEEPALIVE` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:801:22
+    |
+801 |                 sys::SO_KEEPALIVE,
+    |                      ^^^^^^^^^^^^ not found in `sys`
+
+error[E0412]: cannot find type `linger` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:814:31
+    |
+814 |             getsockopt::<sys::linger>(self.as_raw(), sys::SOL_SOCKET, sys::SO_LINGER)
+    |                               ^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:814:59
+    |
+814 |             getsockopt::<sys::linger>(self.as_raw(), sys::SOL_SOCKET, sys::SO_LINGER)
+    |                                                           ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_LINGER` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:814:76
+    |
+814 |             getsockopt::<sys::linger>(self.as_raw(), sys::SOL_SOCKET, sys::SO_LINGER)
+    |                                                                            ^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:835:49
+    |
+835 |         unsafe { setsockopt(self.as_raw(), sys::SOL_SOCKET, sys::SO_LINGER, linger) }
+    |                                                 ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_LINGER` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:835:66
+    |
+835 |         unsafe { setsockopt(self.as_raw(), sys::SOL_SOCKET, sys::SO_LINGER, linger) }
+    |                                                                  ^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:847:53
+    |
+847 |             getsockopt::<c_int>(self.as_raw(), sys::SOL_SOCKET, sys::SO_OOBINLINE)
+    |                                                     ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_OOBINLINE` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:847:70
+    |
+847 |             getsockopt::<c_int>(self.as_raw(), sys::SOL_SOCKET, sys::SO_OOBINLINE)
+    |                                                                      ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:864:22
+    |
+864 |                 sys::SOL_SOCKET,
+    |                      ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_OOBINLINE` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:865:22
+    |
+865 |                 sys::SO_OOBINLINE,
+    |                      ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:878:53
+    |
+878 |             getsockopt::<c_int>(self.as_raw(), sys::SOL_SOCKET, sys::SO_RCVBUF)
+    |                                                     ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_RCVBUF` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:878:70
+    |
+878 |             getsockopt::<c_int>(self.as_raw(), sys::SOL_SOCKET, sys::SO_RCVBUF)
+    |                                                                      ^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:891:22
+    |
+891 |                 sys::SOL_SOCKET,
+    |                      ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_RCVBUF` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:892:22
+    |
+892 |                 sys::SO_RCVBUF,
+    |                      ^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `timeout_opt` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:903:14
+    |
+903 |         sys::timeout_opt(self.as_raw(), sys::SOL_SOCKET, sys::SO_RCVTIMEO)
+    |              ^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:903:46
+    |
+903 |         sys::timeout_opt(self.as_raw(), sys::SOL_SOCKET, sys::SO_RCVTIMEO)
+    |                                              ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_RCVTIMEO` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:903:63
+    |
+903 |         sys::timeout_opt(self.as_raw(), sys::SOL_SOCKET, sys::SO_RCVTIMEO)
+    |                                                               ^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `set_timeout_opt` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:911:14
+    |
+911 |         sys::set_timeout_opt(self.as_raw(), sys::SOL_SOCKET, sys::SO_RCVTIMEO, duration)
+    |              ^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:911:50
+    |
+911 |         sys::set_timeout_opt(self.as_raw(), sys::SOL_SOCKET, sys::SO_RCVTIMEO, duration)
+    |                                                  ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_RCVTIMEO` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:911:67
+    |
+911 |         sys::set_timeout_opt(self.as_raw(), sys::SOL_SOCKET, sys::SO_RCVTIMEO, duration)
+    |                                                                   ^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:921:53
+    |
+921 |             getsockopt::<c_int>(self.as_raw(), sys::SOL_SOCKET, sys::SO_REUSEADDR)
+    |                                                     ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_REUSEADDR` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:921:70
+    |
+921 |             getsockopt::<c_int>(self.as_raw(), sys::SOL_SOCKET, sys::SO_REUSEADDR)
+    |                                                                      ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:935:22
+    |
+935 |                 sys::SOL_SOCKET,
+    |                      ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_REUSEADDR` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:936:22
+    |
+936 |                 sys::SO_REUSEADDR,
+    |                      ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:949:53
+    |
+949 |             getsockopt::<c_int>(self.as_raw(), sys::SOL_SOCKET, sys::SO_SNDBUF)
+    |                                                     ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_SNDBUF` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:949:70
+    |
+949 |             getsockopt::<c_int>(self.as_raw(), sys::SOL_SOCKET, sys::SO_SNDBUF)
+    |                                                                      ^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:962:22
+    |
+962 |                 sys::SOL_SOCKET,
+    |                      ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_SNDBUF` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:963:22
+    |
+963 |                 sys::SO_SNDBUF,
+    |                      ^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `timeout_opt` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:974:14
+    |
+974 |         sys::timeout_opt(self.as_raw(), sys::SOL_SOCKET, sys::SO_SNDTIMEO)
+    |              ^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:974:46
+    |
+974 |         sys::timeout_opt(self.as_raw(), sys::SOL_SOCKET, sys::SO_SNDTIMEO)
+    |                                              ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_SNDTIMEO` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:974:63
+    |
+974 |         sys::timeout_opt(self.as_raw(), sys::SOL_SOCKET, sys::SO_SNDTIMEO)
+    |                                                               ^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `set_timeout_opt` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:982:14
+    |
+982 |         sys::set_timeout_opt(self.as_raw(), sys::SOL_SOCKET, sys::SO_SNDTIMEO, duration)
+    |              ^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOL_SOCKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:982:50
+    |
+982 |         sys::set_timeout_opt(self.as_raw(), sys::SOL_SOCKET, sys::SO_SNDTIMEO, duration)
+    |                                                  ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SO_SNDTIMEO` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:982:67
+    |
+982 |         sys::set_timeout_opt(self.as_raw(), sys::SOL_SOCKET, sys::SO_SNDTIMEO, duration)
+    |                                                                   ^^^^^^^^^^^ not found in `sys`
+
+error[E0412]: cannot find type `linger` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:986:29
+    |
+986 | fn from_linger(linger: sys::linger) -> Option<Duration> {
+    |                             ^^^^^^ not found in `sys`
+
+error[E0412]: cannot find type `linger` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:994:52
+    |
+994 | fn into_linger(duration: Option<Duration>) -> sys::linger {
+    |                                                    ^^^^^^ not found in `sys`
+
+error[E0422]: cannot find struct, variant or union type `linger` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:996:32
+    |
+996 |         Some(duration) => sys::linger {
+    |                                ^^^^^^ not found in `sys`
+
+error[E0422]: cannot find struct, variant or union type `linger` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1000:22
+     |
+1000 |         None => sys::linger {
+     |                      ^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1022:53
+     |
+1022 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IP, sys::IP_HDRINCL)
+     |                                                     ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_HDRINCL` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1022:70
+     |
+1022 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IP, sys::IP_HDRINCL)
+     |                                                                      ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1044:22
+     |
+1044 |                 sys::IPPROTO_IP,
+     |                      ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_HDRINCL` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1045:22
+     |
+1045 |                 sys::IP_HDRINCL,
+     |                      ^^^^^^^^^^ not found in `sys`
+
+error[E0422]: cannot find struct, variant or union type `IpMreq` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1101:25
+     |
+1101 |         let mreq = sys::IpMreq {
+     |                         ^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `to_in_addr` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1102:33
+     |
+1102 |             imr_multiaddr: sys::to_in_addr(multiaddr),
+     |                                 ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `to_in_addr` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1103:33
+     |
+1103 |             imr_interface: sys::to_in_addr(interface),
+     |                                 ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1105:49
+     |
+1105 |         unsafe { setsockopt(self.as_raw(), sys::IPPROTO_IP, sys::IP_ADD_MEMBERSHIP, mreq) }
+     |                                                 ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_ADD_MEMBERSHIP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1105:66
+     |
+1105 |         unsafe { setsockopt(self.as_raw(), sys::IPPROTO_IP, sys::IP_ADD_MEMBERSHIP, mreq) }
+     |                                                                  ^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0599]: no method named `register` found for struct `IoSource<std::net::TcpListener>` in the current scope
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/tcp/listener.rs:146:20
+    |
+146 |         self.inner.register(registry, token, interests)
+    |                    ^^^^^^^^ method not found in `IoSource<std::net::TcpListener>`
+    |
+   ::: /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/io_source.rs:62:1
+    |
+62  | pub struct IoSource<T> {
+    | ---------------------- method `register` not found for this struct
+    |
+    = help: items from traits can only be used if the trait is implemented and in scope
+note: `Source` defines an item `register`, perhaps you need to implement it
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/source.rs:75:1
+    |
+75  | pub trait Source {
+    | ^^^^^^^^^^^^^^^^
+
+error[E0422]: cannot find struct, variant or union type `IpMreq` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1114:25
+     |
+1114 |         let mreq = sys::IpMreq {
+     |                         ^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `to_in_addr` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1115:33
+     |
+1115 |             imr_multiaddr: sys::to_in_addr(multiaddr),
+     |                                 ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `to_in_addr` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1116:33
+     |
+1116 |             imr_interface: sys::to_in_addr(interface),
+     |                                 ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1121:22
+     |
+1121 |                 sys::IPPROTO_IP,
+     |                      ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_DROP_MEMBERSHIP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1122:22
+     |
+1122 |                 sys::IP_DROP_MEMBERSHIP,
+     |                      ^^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `to_mreqn` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1147:26
+     |
+1147 |         let mreqn = sys::to_mreqn(multiaddr, interface);
+     |                          ^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1151:22
+     |
+1151 |                 sys::IPPROTO_IP,
+     |                      ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_ADD_MEMBERSHIP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1152:22
+     |
+1152 |                 sys::IP_ADD_MEMBERSHIP,
+     |                      ^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `to_mreqn` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1176:26
+     |
+1176 |         let mreqn = sys::to_mreqn(multiaddr, interface);
+     |                          ^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1180:22
+     |
+1180 |                 sys::IPPROTO_IP,
+     |                      ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_DROP_MEMBERSHIP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1181:22
+     |
+1181 |                 sys::IP_DROP_MEMBERSHIP,
+     |                      ^^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0422]: cannot find struct, variant or union type `IpMreqSource` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1208:26
+     |
+1208 |         let mreqs = sys::IpMreqSource {
+     |                          ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `to_in_addr` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1209:33
+     |
+1209 |             imr_multiaddr: sys::to_in_addr(group),
+     |                                 ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `to_in_addr` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1210:33
+     |
+1210 |             imr_interface: sys::to_in_addr(interface),
+     |                                 ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `to_in_addr` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1211:34
+     |
+1211 |             imr_sourceaddr: sys::to_in_addr(source),
+     |                                  ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1216:22
+     |
+1216 |                 sys::IPPROTO_IP,
+     |                      ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_ADD_SOURCE_MEMBERSHIP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1217:22
+     |
+1217 |                 sys::IP_ADD_SOURCE_MEMBERSHIP,
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0422]: cannot find struct, variant or union type `IpMreqSource` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1242:26
+     |
+1242 |         let mreqs = sys::IpMreqSource {
+     |                          ^^^^^^^^^^^^ not found in `sys`
+
+error[E0599]: no method named `reregister` found for struct `IoSource<std::net::TcpListener>` in the current scope
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/tcp/listener.rs:155:20
+    |
+155 |         self.inner.reregister(registry, token, interests)
+    |                    ^^^^^^^^^^ method not found in `IoSource<std::net::TcpListener>`
+    |
+   ::: /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/io_source.rs:62:1
+    |
+62  | pub struct IoSource<T> {
+    | ---------------------- method `reregister` not found for this struct
+    |
+    = help: items from traits can only be used if the trait is implemented and in scope
+note: `Source` defines an item `reregister`, perhaps you need to implement it
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/source.rs:75:1
+    |
+75  | pub trait Source {
+    | ^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find function `to_in_addr` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1243:33
+     |
+1243 |             imr_multiaddr: sys::to_in_addr(group),
+     |                                 ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `to_in_addr` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1244:33
+     |
+1244 |             imr_interface: sys::to_in_addr(interface),
+     |                                 ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `to_in_addr` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1245:34
+     |
+1245 |             imr_sourceaddr: sys::to_in_addr(source),
+     |                                  ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1250:22
+     |
+1250 |                 sys::IPPROTO_IP,
+     |                      ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_DROP_SOURCE_MEMBERSHIP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1251:22
+     |
+1251 |                 sys::IP_DROP_SOURCE_MEMBERSHIP,
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1264:44
+     |
+1264 |             getsockopt(self.as_raw(), sys::IPPROTO_IP, sys::IP_MULTICAST_IF).map(sys::from_in_addr)
+     |                                            ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_MULTICAST_IF` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1264:61
+     |
+1264 |             getsockopt(self.as_raw(), sys::IPPROTO_IP, sys::IP_MULTICAST_IF).map(sys::from_in_addr)
+     |                                                             ^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `from_in_addr` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1264:87
+     |
+1264 |             getsockopt(self.as_raw(), sys::IPPROTO_IP, sys::IP_MULTICAST_IF).map(sys::from_in_addr)
+     |                                                                                       ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `to_in_addr` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1272:30
+     |
+1272 |         let interface = sys::to_in_addr(interface);
+     |                              ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1276:22
+     |
+1276 |                 sys::IPPROTO_IP,
+     |                      ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_MULTICAST_IF` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1277:22
+     |
+1277 |                 sys::IP_MULTICAST_IF,
+     |                      ^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1290:53
+     |
+1290 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IP, sys::IP_MULTICAST_LOOP)
+     |                                                     ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_MULTICAST_LOOP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1290:70
+     |
+1290 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IP, sys::IP_MULTICAST_LOOP)
+     |                                                                      ^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1303:22
+     |
+1303 |                 sys::IPPROTO_IP,
+     |                      ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_MULTICAST_LOOP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1304:22
+     |
+1304 |                 sys::IP_MULTICAST_LOOP,
+     |                      ^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1317:53
+     |
+1317 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IP, sys::IP_MULTICAST_TTL)
+     |                                                     ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_MULTICAST_TTL` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1317:70
+     |
+1317 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IP, sys::IP_MULTICAST_TTL)
+     |                                                                      ^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1333:22
+     |
+1333 |                 sys::IPPROTO_IP,
+     |                      ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_MULTICAST_TTL` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1334:22
+     |
+1334 |                 sys::IP_MULTICAST_TTL,
+     |                      ^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0599]: no method named `deregister` found for struct `IoSource<std::net::TcpListener>` in the current scope
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/tcp/listener.rs:159:20
+    |
+159 |         self.inner.deregister(registry)
+    |                    ^^^^^^^^^^ method not found in `IoSource<std::net::TcpListener>`
+    |
+   ::: /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/io_source.rs:62:1
+    |
+62  | pub struct IoSource<T> {
+    | ---------------------- method `deregister` not found for this struct
+    |
+    = help: items from traits can only be used if the trait is implemented and in scope
+note: `Source` defines an item `deregister`, perhaps you need to implement it
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/source.rs:75:1
+    |
+75  | pub trait Source {
+    | ^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1347:53
+     |
+1347 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IP, sys::IP_TTL).map(|ttl| ttl as u32)
+     |                                                     ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_TTL` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1347:70
+     |
+1347 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IP, sys::IP_TTL).map(|ttl| ttl as u32)
+     |                                                                      ^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1356:49
+     |
+1356 |         unsafe { setsockopt(self.as_raw(), sys::IPPROTO_IP, sys::IP_TTL, ttl as c_int) }
+     |                                                 ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_TTL` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1356:66
+     |
+1356 |         unsafe { setsockopt(self.as_raw(), sys::IPPROTO_IP, sys::IP_TTL, ttl as c_int) }
+     |                                                                  ^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1373:49
+     |
+1373 |         unsafe { setsockopt(self.as_raw(), sys::IPPROTO_IP, sys::IP_TOS, tos as c_int) }
+     |                                                 ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_TOS` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1373:66
+     |
+1373 |         unsafe { setsockopt(self.as_raw(), sys::IPPROTO_IP, sys::IP_TOS, tos as c_int) }
+     |                                                                  ^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1392:53
+     |
+1392 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IP, sys::IP_TOS).map(|tos| tos as u32)
+     |                                                     ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_TOS` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1392:70
+     |
+1392 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IP, sys::IP_TOS).map(|tos| tos as u32)
+     |                                                                      ^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1417:22
+     |
+1417 |                 sys::IPPROTO_IP,
+     |                      ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_RECVTOS` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1418:22
+     |
+1418 |                 sys::IP_RECVTOS,
+     |                      ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1441:53
+     |
+1441 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IP, sys::IP_RECVTOS)
+     |                                                     ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IP_RECVTOS` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1441:70
+     |
+1441 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IP, sys::IP_RECVTOS)
+     |                                                                      ^^^^^^^^^^ not found in `sys`
+
+error[E0422]: cannot find struct, variant or union type `Ipv6Mreq` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1461:25
+     |
+1461 |         let mreq = sys::Ipv6Mreq {
+     |                         ^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `to_in6_addr` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1462:36
+     |
+1462 |             ipv6mr_multiaddr: sys::to_in6_addr(multiaddr),
+     |                                    ^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IPV6` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1469:22
+     |
+1469 |                 sys::IPPROTO_IPV6,
+     |                      ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPV6_ADD_MEMBERSHIP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1470:22
+     |
+1470 |                 sys::IPV6_ADD_MEMBERSHIP,
+     |                      ^^^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0422]: cannot find struct, variant or union type `Ipv6Mreq` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1484:25
+     |
+1484 |         let mreq = sys::Ipv6Mreq {
+     |                         ^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `to_in6_addr` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1485:36
+     |
+1485 |             ipv6mr_multiaddr: sys::to_in6_addr(multiaddr),
+     |                                    ^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IPV6` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1492:22
+     |
+1492 |                 sys::IPPROTO_IPV6,
+     |                      ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPV6_DROP_MEMBERSHIP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1493:22
+     |
+1493 |                 sys::IPV6_DROP_MEMBERSHIP,
+     |                      ^^^^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IPV6` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1506:53
+     |
+1506 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IPV6, sys::IPV6_MULTICAST_HOPS)
+     |                                                     ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPV6_MULTICAST_HOPS` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1506:72
+     |
+1506 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IPV6, sys::IPV6_MULTICAST_HOPS)
+     |                                                                        ^^^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IPV6` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1520:22
+     |
+1520 |                 sys::IPPROTO_IPV6,
+     |                      ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPV6_MULTICAST_HOPS` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1521:22
+     |
+1521 |                 sys::IPV6_MULTICAST_HOPS,
+     |                      ^^^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IPV6` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1534:53
+     |
+1534 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IPV6, sys::IPV6_MULTICAST_IF)
+     |                                                     ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPV6_MULTICAST_IF` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1534:72
+     |
+1534 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IPV6, sys::IPV6_MULTICAST_IF)
+     |                                                                        ^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IPV6` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1548:22
+     |
+1548 |                 sys::IPPROTO_IPV6,
+     |                      ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPV6_MULTICAST_IF` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1549:22
+     |
+1549 |                 sys::IPV6_MULTICAST_IF,
+     |                      ^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IPV6` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1562:53
+     |
+1562 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IPV6, sys::IPV6_MULTICAST_LOOP)
+     |                                                     ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPV6_MULTICAST_LOOP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1562:72
+     |
+1562 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IPV6, sys::IPV6_MULTICAST_LOOP)
+     |                                                                        ^^^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IPV6` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1575:22
+     |
+1575 |                 sys::IPPROTO_IPV6,
+     |                      ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPV6_MULTICAST_LOOP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1576:22
+     |
+1576 |                 sys::IPV6_MULTICAST_LOOP,
+     |                      ^^^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IPV6` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1587:53
+     |
+1587 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IPV6, sys::IPV6_UNICAST_HOPS)
+     |                                                     ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPV6_UNICAST_HOPS` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1587:72
+     |
+1587 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IPV6, sys::IPV6_UNICAST_HOPS)
+     |                                                                        ^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IPV6` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1599:22
+     |
+1599 |                 sys::IPPROTO_IPV6,
+     |                      ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPV6_UNICAST_HOPS` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1600:22
+     |
+1600 |                 sys::IPV6_UNICAST_HOPS,
+     |                      ^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IPV6` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1613:53
+     |
+1613 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IPV6, sys::IPV6_V6ONLY)
+     |                                                     ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPV6_V6ONLY` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1613:72
+     |
+1613 |             getsockopt::<c_int>(self.as_raw(), sys::IPPROTO_IPV6, sys::IPV6_V6ONLY)
+     |                                                                        ^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_IPV6` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1630:22
+     |
+1630 |                 sys::IPPROTO_IPV6,
+     |                      ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPV6_V6ONLY` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1631:22
+     |
+1631 |                 sys::IPV6_V6ONLY,
+     |                      ^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `keepalive_time` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1663:14
+     |
+1663 |         sys::keepalive_time(self.as_raw())
+     |              ^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `set_tcp_keepalive` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1790:14
+     |
+1790 |         sys::set_tcp_keepalive(self.as_raw(), params)
+     |              ^^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_TCP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1800:52
+     |
+1800 |             getsockopt::<Bool>(self.as_raw(), sys::IPPROTO_TCP, sys::TCP_NODELAY)
+     |                                                    ^^^^^^^^^^^ not found in `sys`
+
+error[E0599]: no method named `register` found for struct `IoSource<std::net::TcpStream>` in the current scope
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/tcp/stream.rs:325:20
+    |
+325 |         self.inner.register(registry, token, interests)
+    |                    ^^^^^^^^ method not found in `IoSource<std::net::TcpStream>`
+    |
+   ::: /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/io_source.rs:62:1
+    |
+62  | pub struct IoSource<T> {
+    | ---------------------- method `register` not found for this struct
+    |
+    = help: items from traits can only be used if the trait is implemented and in scope
+note: `Source` defines an item `register`, perhaps you need to implement it
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/source.rs:75:1
+    |
+75  | pub trait Source {
+    | ^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `TCP_NODELAY` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1800:70
+     |
+1800 |             getsockopt::<Bool>(self.as_raw(), sys::IPPROTO_TCP, sys::TCP_NODELAY)
+     |                                                                      ^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_TCP` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1816:22
+     |
+1816 |                 sys::IPPROTO_TCP,
+     |                      ^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `TCP_NODELAY` in module `sys`
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1817:22
+     |
+1817 |                 sys::TCP_NODELAY,
+     |                      ^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `AF_INET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:158:42
+    |
+158 |     pub const IPV4: Domain = Domain(sys::AF_INET);
+    |                                          ^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `AF_INET6` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:161:42
+    |
+161 |     pub const IPV6: Domain = Domain(sys::AF_INET6);
+    |                                          ^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOCK_STREAM` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:200:40
+    |
+200 |     pub const STREAM: Type = Type(sys::SOCK_STREAM);
+    |                                        ^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOCK_DGRAM` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:205:39
+    |
+205 |     pub const DGRAM: Type = Type(sys::SOCK_DGRAM);
+    |                                       ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOCK_SEQPACKET` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:210:43
+    |
+210 |     pub const SEQPACKET: Type = Type(sys::SOCK_SEQPACKET);
+    |                                           ^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `SOCK_RAW` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:215:37
+    |
+215 |     pub const RAW: Type = Type(sys::SOCK_RAW);
+    |                                     ^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_ICMP` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:242:48
+    |
+242 |     pub const ICMPV4: Protocol = Protocol(sys::IPPROTO_ICMP);
+    |                                                ^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_ICMPV6` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:245:48
+    |
+245 |     pub const ICMPV6: Protocol = Protocol(sys::IPPROTO_ICMPV6);
+    |                                                ^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_TCP` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:248:45
+    |
+248 |     pub const TCP: Protocol = Protocol(sys::IPPROTO_TCP);
+    |                                             ^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `IPPROTO_UDP` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:251:45
+    |
+251 |     pub const UDP: Protocol = Protocol(sys::IPPROTO_UDP);
+    |                                             ^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find value `MSG_TRUNC` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:284:23
+    |
+284 |         self.0 & sys::MSG_TRUNC != 0
+    |                       ^^^^^^^^^ not found in `sys`
+
+error[E0412]: cannot find type `MaybeUninitSlice` in module `sys`
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:292:38
+    |
+292 | pub struct MaybeUninitSlice<'a>(sys::MaybeUninitSlice<'a>);
+    |                                      ^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0599]: no method named `reregister` found for struct `IoSource<std::net::TcpStream>` in the current scope
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/tcp/stream.rs:334:20
+    |
+334 |         self.inner.reregister(registry, token, interests)
+    |                    ^^^^^^^^^^ method not found in `IoSource<std::net::TcpStream>`
+    |
+   ::: /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/io_source.rs:62:1
+    |
+62  | pub struct IoSource<T> {
+    | ---------------------- method `reregister` not found for this struct
+    |
+    = help: items from traits can only be used if the trait is implemented and in scope
+note: `Source` defines an item `reregister`, perhaps you need to implement it
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/source.rs:75:1
+    |
+75  | pub trait Source {
+    | ^^^^^^^^^^^^^^^^
+
+error[E0599]: no method named `deregister` found for struct `IoSource<std::net::TcpStream>` in the current scope
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/tcp/stream.rs:338:20
+    |
+338 |         self.inner.deregister(registry)
+    |                    ^^^^^^^^^^ method not found in `IoSource<std::net::TcpStream>`
+    |
+   ::: /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/io_source.rs:62:1
+    |
+62  | pub struct IoSource<T> {
+    | ---------------------- method `deregister` not found for this struct
+    |
+    = help: items from traits can only be used if the trait is implemented and in scope
+note: `Source` defines an item `deregister`, perhaps you need to implement it
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/source.rs:75:1
+    |
+75  | pub trait Source {
+    | ^^^^^^^^^^^^^^^^
+
+error[E0599]: no method named `register` found for struct `IoSource<std::net::UdpSocket>` in the current scope
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/udp.rs:622:20
+    |
+622 |         self.inner.register(registry, token, interests)
+    |                    ^^^^^^^^ method not found in `IoSource<std::net::UdpSocket>`
+    |
+   ::: /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/io_source.rs:62:1
+    |
+62  | pub struct IoSource<T> {
+    | ---------------------- method `register` not found for this struct
+    |
+    = help: items from traits can only be used if the trait is implemented and in scope
+note: `Source` defines an item `register`, perhaps you need to implement it
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/source.rs:75:1
+    |
+75  | pub trait Source {
+    | ^^^^^^^^^^^^^^^^
+
+error[E0599]: no method named `reregister` found for struct `IoSource<std::net::UdpSocket>` in the current scope
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/udp.rs:631:20
+    |
+631 |         self.inner.reregister(registry, token, interests)
+    |                    ^^^^^^^^^^ method not found in `IoSource<std::net::UdpSocket>`
+    |
+   ::: /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/io_source.rs:62:1
+    |
+62  | pub struct IoSource<T> {
+    | ---------------------- method `reregister` not found for this struct
+    |
+    = help: items from traits can only be used if the trait is implemented and in scope
+note: `Source` defines an item `reregister`, perhaps you need to implement it
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/source.rs:75:1
+    |
+75  | pub trait Source {
+    | ^^^^^^^^^^^^^^^^
+
+error[E0599]: no method named `deregister` found for struct `IoSource<std::net::UdpSocket>` in the current scope
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/net/udp.rs:635:20
+    |
+635 |         self.inner.deregister(registry)
+    |                    ^^^^^^^^^^ method not found in `IoSource<std::net::UdpSocket>`
+    |
+   ::: /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/io_source.rs:62:1
+    |
+62  | pub struct IoSource<T> {
+    | ---------------------- method `deregister` not found for this struct
+    |
+    = help: items from traits can only be used if the trait is implemented and in scope
+note: `Source` defines an item `deregister`, perhaps you need to implement it
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/mio-0.8.6/src/event/source.rs:75:1
+    |
+75  | pub trait Source {
+    | ^^^^^^^^^^^^^^^^
+
+Some errors have detailed explanations: E0412, E0425, E0432, E0433, E0599.
+For more information about an error, try `rustc --explain E0412`.
+error[E0061]: this function takes 4 arguments but 3 arguments were supplied
+   --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/sockaddr.rs:179:33
+    |
+179 |               Some(SocketAddr::V6(SocketAddrV6::new(
+    |  _________________________________^^^^^^^^^^^^^^^^^-
+180 | |                 ip,
+181 | |                 port,
+182 | |                 addr.sin6_flowinfo,
+...   |
+188 | |                 },
+189 | |             )))
+    | |_____________- an argument of type `u32` is missing
+    |
+note: associated function defined here
+   --> /home/sanndy/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/net/socket_addr.rs:375:18
+    |
+375 |     pub const fn new(ip: Ipv6Addr, port: u16, flowinfo: u32, scope_id: u32) -> SocketAddrV6 {
+    |                  ^^^
+help: provide the argument
+    |
+179 |             Some(SocketAddr::V6(SocketAddrV6::new(ip, port, addr.sin6_flowinfo, /* u32 */)))
+    |                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+error: could not compile `mio` due to 44 previous errors
+warning: build failed, waiting for other jobs to finish...
+error[E0308]: mismatched types
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1898:23
+     |
+1898 | from!(net::TcpStream, Socket);
+     |                       ^^^^^^ expected struct `Socket`, found `()`
+     |
+    ::: /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:104:16
+     |
+104  |             fn from(socket: $from) -> $for {
+     |                ---- implicitly returns `()` as its body has no tail or `return` expression
+
+error[E0308]: mismatched types
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1899:25
+     |
+1899 | from!(net::TcpListener, Socket);
+     |                         ^^^^^^ expected struct `Socket`, found `()`
+     |
+    ::: /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:104:16
+     |
+104  |             fn from(socket: $from) -> $for {
+     |                ---- implicitly returns `()` as its body has no tail or `return` expression
+
+error[E0308]: mismatched types
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1900:23
+     |
+1900 | from!(net::UdpSocket, Socket);
+     |                       ^^^^^^ expected struct `Socket`, found `()`
+     |
+    ::: /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:104:16
+     |
+104  |             fn from(socket: $from) -> $for {
+     |                ---- implicitly returns `()` as its body has no tail or `return` expression
+
+error[E0308]: mismatched types
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1901:15
+     |
+1901 | from!(Socket, net::TcpStream);
+     |               ^^^^^^^^^^^^^^ expected struct `TcpStream`, found `()`
+     |
+    ::: /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:104:16
+     |
+104  |             fn from(socket: $from) -> $for {
+     |                ---- implicitly returns `()` as its body has no tail or `return` expression
+
+error[E0308]: mismatched types
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1902:15
+     |
+1902 | from!(Socket, net::TcpListener);
+     |               ^^^^^^^^^^^^^^^^ expected struct `TcpListener`, found `()`
+     |
+    ::: /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:104:16
+     |
+104  |             fn from(socket: $from) -> $for {
+     |                ---- implicitly returns `()` as its body has no tail or `return` expression
+
+error[E0308]: mismatched types
+    --> /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/socket.rs:1903:15
+     |
+1903 | from!(Socket, net::UdpSocket);
+     |               ^^^^^^^^^^^^^^ expected struct `UdpSocket`, found `()`
+     |
+    ::: /home/sanndy/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.4.7/src/lib.rs:104:16
+     |
+104  |             fn from(socket: $from) -> $for {
+     |                ---- implicitly returns `()` as its body has no tail or `return` expression
+
+Some errors have detailed explanations: E0061, E0308, E0412, E0422, E0425, E0432, E0433, E0583.
+For more information about an error, try `rustc --explain E0061`.
+error: could not compile `socket2` due to 200 previous errors
+warning: unused import: `leptos::*`
+ --> src/lib.rs:2:5
+  |
+2 | use leptos::*;
+  |     ^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused imports: `Body`, `Request`, `extract::Extension`
+  --> src/fileserv.rs:7:23
+   |
+7  |         body::{boxed, Body},
+   |                       ^^^^
+8  |         extract::Extension,
+   |         ^^^^^^^^^^^^^^^^^^
+9  |         response::IntoResponse,
+10 |         http::{Request, StatusCode, Uri},
+   |                ^^^^^^^
+
+warning: unused import: `tower::ServiceExt`
+  --> src/fileserv.rs:13:9
+   |
+13 |     use tower::ServiceExt;
+   |         ^^^^^^^^^^^^^^^^^
+
+warning: unused import: `tower_http::services::ServeDir`
+  --> src/fileserv.rs:14:9
+   |
+14 |     use tower_http::services::ServeDir;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `std::sync::Arc`
+  --> src/fileserv.rs:15:9
+   |
+15 |     use std::sync::Arc;
+   |         ^^^^^^^^^^^^^^
+
+warning: unused import: `leptos::*`
+  --> src/fileserv.rs:16:9
+   |
+16 |     use leptos::*;
+   |         ^^^^^^^^^
+
+warning: unused imports: `ErrorTemplateProps`, `ErrorTemplate`
+  --> src/fileserv.rs:17:33
+   |
+17 |     use crate::error_template::{ErrorTemplate, ErrorTemplateProps};
+   |                                 ^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `crate::error_template::AppError`
+  --> src/fileserv.rs:18:9
+   |
+18 |     use crate::error_template::AppError;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `cx`
+  --> src/app.rs:73:43
+   |
+73 |         <Route path="/contact" view=move |cx| {
+   |                                           ^^ help: if this is intentional, prefix it with an underscore: `_cx`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `set_my_server_fn_args`
+  --> src/app.rs:82:29
+   |
+82 |     let (my_server_fn_args, set_my_server_fn_args) = create_signal(cx, default_server_fn_args);
+   |                             ^^^^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_set_my_server_fn_args`
+
+warning: `start-axum` (lib) generated 10 warnings (run `cargo fix --lib -p start-axum` to apply 10 suggestions)
+    Finished release [optimized] target(s) in 0.13s
+[38;5;77m       Cargo[0m finished [38;5;241mcargo build --package=start-axum --bin=start-axum --target-dir=target/server --no-default-features --features=ssr --release[0m
